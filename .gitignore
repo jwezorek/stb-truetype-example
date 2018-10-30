@@ -16,3 +16,15 @@ profile
 *.moved-aside
 DerivedData
 .idea/
+/.vs/stb-truetype-example/v15/ipch/AutoPCH/d61ffda39502f481/EXE_COMMON.ipch
+/.vs/stb-truetype-example/v15/ipch/AutoPCH/d61ffda39502f481
+/.vs/stb-truetype-example/v15/ipch/AutoPCH/8106b442dadb8038/MAIN.ipch
+/.vs/stb-truetype-example/v15/ipch/AutoPCH/8106b442dadb8038
+/.vs/stb-truetype-example/v15/ipch/AutoPCH
+/.vs/stb-truetype-example/v15/Browse.VC.opendb
+/.vs/stb-truetype-example/v15/Browse.VC.db
+/.vs/stb-truetype-example/v15/.suo
+/.vs/stb-truetype-example/v15
+/stb-truetype-example/Debug
+/stb-truetype-example/stb-truetype-example.vcxproj.user
+/stb-truetype-example/stb-truetype-example.vcxproj.filters
