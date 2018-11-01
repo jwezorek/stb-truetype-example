@@ -27,6 +27,19 @@ std::vector<unsigned char> readFile(const std::string& filename)
 	);
 }
 
+void MakeRgbaFromSingleChannel(std::vector<unsigned char>& data)
+{
+	size_t src_sz = data.size();
+	size_t dst_sz = src_sz * 4;
+	data.resize(dst_sz);
+	unsigned char *src, *dst;
+	for (src = &data[src_sz - 1], dst = &data[dst_sz-4]; dst >= &data[0]; src--, dst -= 4)
+	{
+		dst[0] = dst[1] = dst[2] = (*src > 0) ? 255 : 0;
+		dst[3] = *src;
+	}
+}
+
 int main(int argc, const char* argv[])
 {
     /* load font file */
@@ -81,9 +94,13 @@ int main(int argc, const char* argv[])
         kern = stbtt_GetCodepointKernAdvance(&info, word[i], word[i + 1]);
         x += static_cast<int>(kern * scale);
     }
-    
-    /* save out a 1 channel image */
-    stbi_write_png("out.png", b_w, b_h, 1, bitmap, b_w);
+
+	// save as 1-channel image...
+	stbi_write_png("out-1.png", b_w, b_h, 1, &(bitmap_buffer[0]), b_w);
+
+	// save as 4-channel image...
+	MakeRgbaFromSingleChannel( bitmap_buffer );
+    stbi_write_png("out-4.png", b_w, b_h, 4, &(bitmap_buffer[0]), b_w*4);
    
     return 0;
 }
