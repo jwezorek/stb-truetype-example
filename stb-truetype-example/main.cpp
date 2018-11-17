@@ -43,14 +43,14 @@ void MakeRgbaFromSingleChannel(std::vector<unsigned char>& data)
 int main(int argc, const char* argv[])
 {
     /* load font file */
-    std::vector<unsigned char> fontBuffer = readFile("font/cmunrm.ttf");
+    std::vector<unsigned char> fontBuffer = readFile("font/Roboto-Medium.ttf");
 
     /* prepare font */
     stbtt_fontinfo info;
     if (!stbtt_InitFont(&info, &(fontBuffer[0]), 0))
 		std::cout << "failed" << std::endl;
     
-    int b_w = 512; /* bitmap width */
+    int b_w = 800; /* bitmap width */
     int b_h = 128; /* bitmap height */
     int l_h = 64; /* line height */
 
@@ -61,7 +61,7 @@ int main(int argc, const char* argv[])
     /* calculate font scaling */
     float scale = stbtt_ScaleForPixelHeight(&info, static_cast<float>(l_h) );
 
-    std::string word = "how are you?";
+    std::string word = "For the love of Snoopy";
     
     int x = 0;
        
@@ -69,7 +69,6 @@ int main(int argc, const char* argv[])
     stbtt_GetFontVMetrics(&info, &ascent, &descent, &lineGap);
     
     ascent = static_cast<int>(ascent * scale);
-    descent = static_cast<int>(descent * scale);
     
     for (size_t i = 0; i < word.size(); ++i)
     {
